@@ -23,6 +23,7 @@ ansible-run
 Things macOS does not let a script do:
 
 - Desktop widgets: right-click each one and choose Remove Widget.
+- AeroSpace: open it once and allow Accessibility access when asked. After that it starts at login.
 
 ## Layout
 
