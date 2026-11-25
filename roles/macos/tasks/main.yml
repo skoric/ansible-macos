@@ -17,6 +17,38 @@
     value: []
   notify: Restart Dock
 
+- name: Hide recent apps in the Dock
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    type: bool
+    value: false
+  notify: Restart Dock
+
+- name: Minimize windows with the scale effect
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mineffect
+    type: string
+    value: scale
+  notify: Restart Dock
+
+- name: Minimize windows into their application icon
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: minimize-to-application
+    type: bool
+    value: true
+  notify: Restart Dock
+
+- name: Automatically hide and show the Dock
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+  notify: Restart Dock
+
 # Mouse and trackpad
 
 - name: Turn off natural scrolling
