@@ -1,3 +1,5 @@
 # Apply this Mac's setup from anywhere. Extra arguments go to ansible-playbook,
 # e.g. `ansible-run --check` or `ansible-run --tags homebrew`.
 alias ansible-run='ANSIBLE_CONFIG="$HOME/Development/ansible-macos/ansible.cfg" ansible-playbook "$HOME/Development/ansible-macos/playbook.yml"'
+
+alias che='chezmoi'
