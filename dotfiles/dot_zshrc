@@ -8,6 +8,7 @@ source "$ZSH/oh-my-zsh.sh"
 alias ansible-run='ANSIBLE_CONFIG="$HOME/Development/ansible-macos/ansible.cfg" ansible-playbook "$HOME/Development/ansible-macos/playbook.yml"'
 
 alias che='chezmoi'
+alias vim='nvim'
 
 # Load the GitHub SSH key from 1Password into the ssh-agent for 12 hours.
 # Asks for the 1Password password. The key is referenced by item ID, so renaming it in 1Password is fine.

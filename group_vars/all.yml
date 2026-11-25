@@ -3,6 +3,7 @@ homebrew_formulae:
   - chezmoi
   - gh
   - git
+  - neovim
 
 homebrew_casks:
   - 1password-cli
