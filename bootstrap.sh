@@ -8,6 +8,7 @@
 set -euo pipefail
 
 REPO_URL="https://github.com/skoric/ansible-macos.git"
+REPO_SSH_URL="git@github.com:skoric/ansible-macos.git"
 REPO_DIR="$HOME/Development/ansible-macos"
 BREW="/opt/homebrew/bin/brew"
 
@@ -27,6 +28,9 @@ if [[ ! -d "$REPO_DIR/.git" ]]; then
   mkdir -p "$(dirname "$REPO_DIR")"
   git clone "$REPO_URL" "$REPO_DIR"
 fi
+
+# Cloned anonymously over HTTPS (a new Mac has no SSH key yet); use SSH from here on
+git -C "$REPO_DIR" remote set-url origin "$REPO_SSH_URL"
 
 # Everything else is Ansible's job
 cd "$REPO_DIR"
