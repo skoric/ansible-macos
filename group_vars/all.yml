@@ -8,6 +8,7 @@ homebrew_formulae:
 homebrew_casks:
   - 1password-cli
   - claude-code
+  - firefox
   - font-new-york
   - font-sf-compact
   - font-sf-mono
