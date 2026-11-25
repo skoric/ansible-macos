@@ -64,6 +64,23 @@
     value: true
   notify: Restart Dock
 
+# Keyboard
+
+- name: Turn off spelling correction and typing suggestions
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: "{{ item }}"
+    type: bool
+    value: false
+  loop:
+    - NSAutomaticSpellingCorrectionEnabled   # Correct spelling automatically
+    - WebAutomaticSpellingCorrectionEnabled  # the same, in web views
+    - NSAllowContinuousSpellChecking         # Check spelling while typing (red underlines)
+    - WebContinuousSpellCheckingEnabled      # the same, in web views
+    - NSAutomaticCapitalizationEnabled       # Capitalize words automatically
+    - NSAutomaticInlinePredictionEnabled     # Show inline predictive text
+    - NSAutomaticTextCompletionEnabled       # Typing suggestions
+
 # Mouse and trackpad
 
 - name: Turn off natural scrolling
