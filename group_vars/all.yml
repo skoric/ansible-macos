@@ -6,6 +6,7 @@ homebrew_formulae:
   - neovim
 
 homebrew_casks:
+  - 1password
   - 1password-cli
   - claude-code
   - firefox
