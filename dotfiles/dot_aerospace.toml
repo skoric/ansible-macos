@@ -56,11 +56,12 @@ on-mode-changed = []
 
 # Ghostty uses macOS native tabs, which macOS reports to window managers as separate
 # windows. Without this, each Ghostty tab gets tiled as its own window.
+# Ghostty windows therefore start floating: tile one with alt-shift-semicolon, then f.
 # See: https://ghostty.org/docs/help/macos-tiling-wms#aerospace
 on-window-detected = [
     {
         if = 'test %{app-bundle-id} = com.mitchellh.ghostty',
-        run = 'layout tiling',
+        run = 'layout floating',
     },
 ]
 
