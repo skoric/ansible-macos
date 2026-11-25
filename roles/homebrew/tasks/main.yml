@@ -3,7 +3,24 @@
     name: "{{ homebrew_formulae }}"
     state: present
 
+# Some casks run an installer that needs admin rights, so the Mac password is
+# asked for, but only when a cask from the list is not installed yet.
+- name: List installed Homebrew casks
+  ansible.builtin.command: brew list --cask -1
+  register: homebrew_installed_casks
+  changed_when: false
+  check_mode: false
+
+- name: Ask for the Mac password
+  ansible.builtin.pause:
+    prompt: Mac password (some app installers need it)
+    echo: false
+  register: homebrew_password
+  no_log: true
+  when: homebrew_casks | difference(homebrew_installed_casks.stdout_lines) | length > 0
+
 - name: Install Homebrew casks
   community.general.homebrew_cask:
     name: "{{ homebrew_casks }}"
     state: present
+    sudo_password: "{{ homebrew_password.user_input | default(omit, true) }}"
