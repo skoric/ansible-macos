@@ -22,4 +22,4 @@ ansible-run
 
 - `group_vars/all.yml`: what to install.
 - `roles/`: how each part is applied.
-- `home/`: dotfiles, managed by chezmoi.
+- `dotfiles/`: dotfiles, managed by chezmoi.
