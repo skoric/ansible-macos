@@ -18,6 +18,12 @@ To apply changes afterwards, from any directory:
 ansible-run
 ```
 
+## Manual steps
+
+Things macOS does not let a script do:
+
+- Desktop widgets: right-click each one and choose Remove Widget.
+
 ## Layout
 
 - `group_vars/all.yml`: what to install.
