@@ -76,9 +76,27 @@
       - JavaScript
       - "{{ role_path }}/files/default-app.js"
       - /Applications/Ghostty.app
+      - type
       - public.unix-executable
   register: macos_default_terminal
   changed_when: macos_default_terminal.stdout == "changed"
+
+# The first time, macOS shows a dialog asking to confirm; the task waits for the answer.
+- name: Make Firefox the default browser (macOS asks you to confirm)
+  ansible.builtin.command:
+    argv:
+      - osascript
+      - -l
+      - JavaScript
+      - "{{ role_path }}/files/default-app.js"
+      - /Applications/Firefox.app
+      - scheme
+      - "{{ item }}"
+  loop:
+    - http
+    - https
+  register: macos_default_browser
+  changed_when: macos_default_browser.stdout == "changed"
 
 # Keyboard
 
