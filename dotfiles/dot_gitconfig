@@ -1,0 +1,8 @@
+[user]
+	name = Ivan Skoric
+	email = ivanskoric7@gmail.com
+	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGgzq3X9FN3OCR6NPhRuHXS+AlW67r2xwtjt2rAa65/I
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
