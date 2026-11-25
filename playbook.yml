@@ -3,6 +3,8 @@
   roles:
     - role: homebrew
       tags: homebrew
+    - role: ohmyzsh
+      tags: ohmyzsh
     - role: chezmoi
       tags: chezmoi
     - role: macos
