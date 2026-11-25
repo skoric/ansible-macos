@@ -1,0 +1,28 @@
+# Desktop
+
+- name: Hide widgets on the desktop
+  community.general.osx_defaults:
+    domain: com.apple.WindowManager
+    key: StandardHideWidgets
+    type: bool
+    value: true
+
+# Dock
+
+- name: Remove all pinned apps from the Dock
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: persistent-apps
+    type: array
+    value: []
+  notify: Restart Dock
+
+# Mouse and trackpad
+
+- name: Turn off natural scrolling
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+  notify: Apply input settings

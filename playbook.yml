@@ -5,3 +5,5 @@
       tags: homebrew
     - role: chezmoi
       tags: chezmoi
+    - role: macos
+      tags: macos
