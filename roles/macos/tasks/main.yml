@@ -64,6 +64,22 @@
     value: true
   notify: Restart Dock
 
+# Default apps
+
+# What opens when a script or command-line program is double-clicked in Finder.
+# The first time, macOS shows a dialog asking to confirm; the task waits for the answer.
+- name: Make Ghostty the default terminal (macOS asks you to confirm)
+  ansible.builtin.command:
+    argv:
+      - osascript
+      - -l
+      - JavaScript
+      - "{{ role_path }}/files/default-app.js"
+      - /Applications/Ghostty.app
+      - public.unix-executable
+  register: macos_default_terminal
+  changed_when: macos_default_terminal.stdout == "changed"
+
 # Keyboard
 
 - name: Turn off spelling correction and typing suggestions
