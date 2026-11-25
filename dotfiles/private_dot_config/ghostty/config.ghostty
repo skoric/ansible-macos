@@ -1,0 +1,13 @@
+# Font: SF Mono, installed by the homebrew role
+font-family = SF Mono
+font-size = 14
+
+# Colours: Everforest Light, defined in themes/everforest-light
+theme = everforest-light
+
+# Space between the text and the window edge
+window-padding-x = 10
+window-padding-y = 10
+
+# Hide the mouse pointer while typing
+mouse-hide-while-typing = true
