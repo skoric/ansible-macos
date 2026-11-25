@@ -7,6 +7,21 @@
     type: bool
     value: true
 
+# Skipped until wallpaper/wallpaper.jpg exists
+- name: Set the wallpaper
+  ansible.builtin.command:
+    argv:
+      - osascript
+      - -l
+      - JavaScript
+      - "{{ role_path }}/files/wallpaper.js"
+      - "{{ macos_wallpaper }}"
+  vars:
+    macos_wallpaper: "{{ playbook_dir }}/wallpaper/wallpaper.jpg"
+  when: macos_wallpaper is file
+  register: macos_wallpaper_result
+  changed_when: macos_wallpaper_result.stdout == "changed"
+
 # Dock
 
 - name: Remove all pinned apps from the Dock
