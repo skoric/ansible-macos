@@ -35,3 +35,21 @@ git -C "$REPO_DIR" remote set-url origin "$REPO_SSH_URL"
 # Everything else is Ansible's job
 cd "$REPO_DIR"
 ansible-playbook playbook.yml
+
+# The steps below need you at the keyboard, so Ansible cannot do them.
+# They rely on the playbook having installed op and gh (see group_vars/all.yml).
+
+# 1Password: register this Mac (asks for sign-in address, email, Secret Key, password)
+if [[ -z "$(op account list 2>/dev/null)" ]]; then
+  op account add
+fi
+
+# GitHub CLI: log in through the browser
+if ! gh auth status >/dev/null 2>&1; then
+  gh auth login --hostname github.com --git-protocol ssh --skip-ssh-key --web
+fi
+
+# SSH key: load it from 1Password if the agent has none (asks for the 1Password password)
+if ! ssh-add -l >/dev/null 2>&1; then
+  zsh -c 'source "$HOME/.zshrc" && ssh-load'
+fi

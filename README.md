@@ -10,7 +10,7 @@ On a new Mac:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/skoric/ansible-macos/main/bootstrap.sh)"
 ```
 
-This installs Homebrew and Ansible, clones this repo to `~/Development/ansible-macos`, and runs the playbook.
+This installs Homebrew and Ansible, clones this repo to `~/Development/ansible-macos`, and runs the playbook. It then asks you to sign in to 1Password and GitHub, and loads the SSH key.
 
 To apply changes afterwards, from any directory:
 
