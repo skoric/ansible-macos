@@ -12,8 +12,14 @@ On a new Mac:
 
 This installs Homebrew and Ansible, clones this repo to `~/Development/ansible-macos`, and runs the playbook.
 
-To apply changes afterwards:
+To apply changes afterwards, from any directory:
 
 ```sh
-cd ~/Development/ansible-macos && ansible-playbook playbook.yml
+ansible-run
 ```
+
+## Layout
+
+- `group_vars/all.yml`: what to install.
+- `roles/`: how each part is applied.
+- `home/`: dotfiles, managed by chezmoi.

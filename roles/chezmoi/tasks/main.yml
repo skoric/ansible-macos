@@ -1,0 +1,18 @@
+- name: Create chezmoi config directory
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/.config/chezmoi"
+    state: directory
+    mode: "0700"
+
+- name: Point chezmoi at this repo
+  ansible.builtin.copy:
+    dest: "{{ ansible_facts.env.HOME }}/.config/chezmoi/chezmoi.toml"
+    content: |
+      sourceDir = "{{ playbook_dir }}"
+    mode: "0600"
+
+# --no-tty: if a dotfile was edited by hand, fail instead of waiting on a prompt nobody can see
+- name: Apply dotfiles
+  ansible.builtin.command: chezmoi apply --verbose --no-tty
+  register: chezmoi_apply
+  changed_when: chezmoi_apply.stdout | length > 0
