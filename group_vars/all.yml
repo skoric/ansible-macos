@@ -2,6 +2,7 @@ homebrew_formulae:
   - ansible
   - chezmoi
   - gh
+  - git
 
 homebrew_casks:
   - 1password-cli
