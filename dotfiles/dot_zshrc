@@ -3,3 +3,11 @@
 alias ansible-run='ANSIBLE_CONFIG="$HOME/Development/ansible-macos/ansible.cfg" ansible-playbook "$HOME/Development/ansible-macos/playbook.yml"'
 
 alias che='chezmoi'
+
+# Load the GitHub SSH key from 1Password into the ssh-agent for 12 hours.
+# Asks for the 1Password password. The key is referenced by item ID, so renaming it in 1Password is fine.
+ssh-load() {
+  local session
+  session="$(op signin --raw)" || return
+  op read --session "$session" "op://Personal/mvnw7pezlpytyqcgaj6bq7fd64/private key?ssh-format=openssh" | ssh-add -t 12h -
+}
