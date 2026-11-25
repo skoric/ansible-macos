@@ -1,0 +1,7 @@
+homebrew_formulae:
+  - ansible
+  - gh
+
+homebrew_casks:
+  - 1password-cli
+  - claude-code

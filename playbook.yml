@@ -1,0 +1,5 @@
+- name: Set up this Mac
+  hosts: localhost
+  roles:
+    - role: homebrew
+      tags: homebrew
