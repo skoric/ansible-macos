@@ -1,3 +1,11 @@
+# Extra package sources, for packages that are not in Homebrew's main catalogue
+homebrew_taps:
+  - nikitabobko/tap  # aerospace
+
+# Homebrew refuses packages from those sources until each one is trusted by name
+homebrew_trusted_casks:
+  - nikitabobko/tap/aerospace
+
 homebrew_formulae:
   - ansible
   - chezmoi
@@ -8,6 +16,7 @@ homebrew_formulae:
 homebrew_casks:
   - 1password
   - 1password-cli
+  - aerospace
   - claude-code
   - firefox
   - font-new-york

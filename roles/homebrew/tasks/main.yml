@@ -1,3 +1,20 @@
+- name: Add Homebrew taps
+  community.general.homebrew_tap:
+    name: "{{ homebrew_taps }}"
+    state: present
+
+- name: List what Homebrew already trusts
+  ansible.builtin.command: brew trust --json=v1
+  register: homebrew_trust
+  changed_when: false
+  check_mode: false
+
+- name: Trust casks from Homebrew taps
+  ansible.builtin.command: brew trust --cask {{ item }}
+  loop: "{{ homebrew_trusted_casks }}"
+  when: item not in (homebrew_trust.stdout | from_json).casks
+  changed_when: true
+
 - name: Install Homebrew formulae
   community.general.homebrew:
     name: "{{ homebrew_formulae }}"
