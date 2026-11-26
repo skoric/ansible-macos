@@ -17,3 +17,20 @@ ssh-load() {
   session="$(op signin --raw)" || return
   op read --session "$session" "op://Personal/mvnw7pezlpytyqcgaj6bq7fd64/private key?ssh-format=openssh" | ssh-add -t 12h -
 }
+
+# private.yml holds settings that stay out of the public repo. Its copy of record is a
+# 1Password document, referenced by ID. Both commands ask for the 1Password password.
+
+# 1Password -> this Mac. Asks before replacing a private.yml that is already there.
+private-load() {
+  local session
+  session="$(op signin --raw)" || return
+  op document get 52gwpy3sqyhmfwmxi6inl6k63a --session "$session" --out-file "$HOME/Development/ansible-macos/private.yml"
+}
+
+# This Mac -> 1Password. Run it after editing private.yml.
+private-save() {
+  local session
+  session="$(op signin --raw)" || return
+  op document edit 52gwpy3sqyhmfwmxi6inl6k63a "$HOME/Development/ansible-macos/private.yml" --session "$session"
+}
