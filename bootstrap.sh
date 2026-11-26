@@ -55,5 +55,11 @@ if ! ssh-add -l >/dev/null 2>&1; then
   zsh -c 'source "$HOME/.zshrc" && ssh-load'
 fi
 
-# Project repositories, now that the SSH key is loaded
+# Private settings: fetch them from 1Password if this Mac does not have them yet
+# (asks for the 1Password password)
+if [[ ! -f "$REPO_DIR/private.yml" ]]; then
+  zsh -c 'source "$HOME/.zshrc" && private-load'
+fi
+
+# Project repositories, now that the SSH key and the private list are here
 ansible-playbook playbook.yml --tags projects
