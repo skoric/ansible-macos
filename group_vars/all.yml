@@ -21,6 +21,7 @@ homebrew_casks:
   - android-studio
   - claude-code
   - cmux
+  - docker-desktop
   - firefox
   - font-new-york
   - font-sf-compact
