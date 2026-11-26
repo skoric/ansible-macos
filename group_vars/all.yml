@@ -17,6 +17,7 @@ homebrew_casks:
   - 1password
   - 1password-cli
   - aerospace
+  - android-studio
   - claude-code
   - cmux
   - firefox
