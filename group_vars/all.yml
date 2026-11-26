@@ -18,9 +18,9 @@ homebrew_casks:
   - 1password-cli
   - aerospace
   - claude-code
+  - cmux
   - firefox
   - font-new-york
   - font-sf-compact
   - font-sf-mono
   - font-sf-pro
-  - ghostty

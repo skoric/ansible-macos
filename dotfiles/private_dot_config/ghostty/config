@@ -1,3 +1,6 @@
+# Read by cmux, which is built on Ghostty and takes its fonts, colours and terminal
+# behaviour from this file.
+
 # Font: SF Mono, installed by the homebrew role
 font-family = SF Mono
 font-size = 14
