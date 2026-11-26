@@ -32,10 +32,10 @@ fi
 # Cloned anonymously over HTTPS (a new Mac has no SSH key yet); use SSH from here on
 git -C "$REPO_DIR" remote set-url origin "$REPO_SSH_URL"
 
-# Everything else is Ansible's job. The project repositories are private and need
+# Everything else is Ansible's job. The repositories to clone are private and need
 # the SSH key, so they are left for the end.
 cd "$REPO_DIR"
-ansible-playbook playbook.yml --skip-tags projects
+ansible-playbook playbook.yml --skip-tags repos
 
 # The steps below need you at the keyboard, so Ansible cannot do them.
 # They rely on the playbook having installed op and gh (see group_vars/all.yml).
@@ -61,5 +61,5 @@ if [[ ! -f "$REPO_DIR/private.yml" ]]; then
   zsh -c 'source "$HOME/.zshrc" && private-load'
 fi
 
-# Project repositories, now that the SSH key and the private list are here
-ansible-playbook playbook.yml --tags projects
+# Repositories, now that the SSH key and the private list are here
+ansible-playbook playbook.yml --tags repos

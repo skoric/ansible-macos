@@ -1,0 +1,3 @@
+# Folder under the home directory mapped to the address it is cloned from.
+# The real list is private: it lives in private.yml, which is not in git.
+repos_list: {}
