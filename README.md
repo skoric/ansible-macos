@@ -30,3 +30,4 @@ Things macOS does not let a script do:
 - `group_vars/all.yml`: what to install.
 - `roles/`: how each part is applied.
 - `dotfiles/`: dotfiles, managed by chezmoi.
+- `private.yml`: private settings, such as which project repositories to clone. Not in git; a copy is kept in 1Password.

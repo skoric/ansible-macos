@@ -9,3 +9,5 @@
       tags: chezmoi
     - role: macos
       tags: macos
+    - role: projects
+      tags: projects

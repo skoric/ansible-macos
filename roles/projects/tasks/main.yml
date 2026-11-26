@@ -1,0 +1,22 @@
+- name: Create the Projects folder
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/Projects"
+    state: directory
+    mode: "0755"
+
+# Without private.yml the list is empty and nothing is cloned
+- name: Load the private list of repositories
+  ansible.builtin.include_vars:
+    file: "{{ playbook_dir }}/private.yml"
+  when: (playbook_dir ~ '/private.yml') is file
+
+# update: false means a repository that is already there is never touched.
+# Cloning a missing one needs the SSH key in the agent (run ssh-load first).
+- name: Clone project repositories
+  ansible.builtin.git:
+    repo: "{{ item.value }}"
+    dest: "{{ ansible_facts.env.HOME }}/Projects/{{ item.key }}"
+    update: false
+  loop: "{{ projects_repos | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
