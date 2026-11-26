@@ -5,8 +5,8 @@
 font-family = SF Mono
 font-size = 14
 
-# Colours: Everforest Light, defined in themes/everforest-light
-theme = everforest-light
+# Colours: Dayfox, defined in themes/dayfox
+theme = dayfox
 
 # Space between the text and the window edge
 window-padding-x = 10
