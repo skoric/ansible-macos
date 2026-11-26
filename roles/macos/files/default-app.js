@@ -1,7 +1,7 @@
 // Makes an app the default for a kind of file or a kind of link, unless it already is.
 // Prints "changed" or "unchanged" so Ansible can report accurately.
 //
-//   osascript -l JavaScript default-app.js /Applications/Ghostty.app type public.unix-executable
+//   osascript -l JavaScript default-app.js /Applications/cmux.app type public.unix-executable
 //   osascript -l JavaScript default-app.js /Applications/Firefox.app scheme http
 
 ObjC.import('AppKit');

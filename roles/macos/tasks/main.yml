@@ -66,18 +66,24 @@
 
 # Default apps
 
-# What opens when a script or command-line program is double-clicked in Finder.
+# What opens scripts and command-line programs double-clicked in Finder, and ssh:// links.
 # The first time, macOS shows a dialog asking to confirm; the task waits for the answer.
-- name: Make Ghostty the default terminal (macOS asks you to confirm)
+- name: Make cmux the default terminal (macOS asks you to confirm)
   ansible.builtin.command:
     argv:
       - osascript
       - -l
       - JavaScript
       - "{{ role_path }}/files/default-app.js"
-      - /Applications/Ghostty.app
-      - type
-      - public.unix-executable
+      - /Applications/cmux.app
+      - "{{ item.kind }}"
+      - "{{ item.value }}"
+  loop:
+    - { kind: type, value: public.unix-executable }
+    - { kind: type, value: com.apple.terminal.shell-script }
+    - { kind: scheme, value: ssh }
+  loop_control:
+    label: "{{ item.value }}"
   register: macos_default_terminal
   changed_when: macos_default_terminal.stdout == "changed"
 
